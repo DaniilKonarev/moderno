@@ -334,3 +334,47 @@
 
 //advantages end
 
+//authors start
+.authors{
+	min-height: 750px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__box{
+		height: 214px;
+		width: 650px;
+		background-color: $green;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0px 60px;
+		
+	}
+	&__title{
+		color: #fff;
+		font-weight: 400;
+		font-size: 30px;
+		font-weight: 36px;
+		max-width: 300px;
+		line-height: 36px;
+		span{
+			@include f700;
+		}
+	}
+	&__link{
+		padding: 14px 31px;
+		background-color: #fff;
+		color: $bg;
+		font-size: 18px;
+		line-height: 36px;
+		
+	}
+}
+
+
+
+
+//authors end
