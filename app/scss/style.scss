@@ -35,6 +35,18 @@
 	background-color: $red;
 }
 
+.header__circle{
+	height: 34px;
+	width: 34px;
+	background-color: #f5f5f5;
+	border-radius: 50%;
+	& + .header__circle{
+		margin-left: 15px;
+	}
+}
+
+
+
 .header__menu {
 	background-color: $bg;
 }
@@ -473,7 +485,7 @@
 		padding-left: 22px;
 		position: relative;
 		&::before {
-			content: "\f054";
+			content: "\f105";
 			font-family: "icomoon";
 			color: $green;
 			left: 0;
