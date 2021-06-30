@@ -31,21 +31,112 @@
 .header__btn-login {
 	background-color: $green;
 }
-.header__btn-register {
+.header__btn-register,
+.header__btn-logout {
 	background-color: $red;
+	margin-left: 15px;
+}
+.header__btn-login--off {
+	display: none;
+}
+.header__btn-logout {
+	display: none;
+	&.header__btn-login--on {
+		display: block;
+	}
 }
 
-.header__circle{
+.header__circle {
 	height: 34px;
 	width: 34px;
 	background-color: #f5f5f5;
 	border-radius: 50%;
-	& + .header__circle{
-		margin-left: 15px;
+	position: relative;
+	display: none;
+	&.active {
+		display: block;
+	}
+	&::before {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: #a0a0a0;
+		font-size: 14px;
+	}
+	span {
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 18px;
+		right: -7px;
+		top: -9px;
+		font-size: 11px;
+		color: #fff;
+	}
+}
+.header__box {
+	display: flex;
+	align-items: center;
+}
+
+.notification {
+	span {
+		background-color: $yellow;
+	}
+}
+.message {
+	span {
+		background-color: $tomate;
 	}
 }
 
+.basket {
+	span {
+		background-color: $green;
+	}
+}
 
+.user {
+	margin-left: 20px;
+	margin-right: 25px;
+	padding-right: 20px;
+	position: relative;
+	&::after {
+		content: "\f107";
+		font-family: "icomoon";
+		color: bcbcbc;
+		font-size: 16px;
+		position: absolute;
+		right: 0;
+		top: 0px;
+	}
+	&__inner {
+		display: flex;
+		align-items: center;
+	}
+	&__images {
+		margin-right: 15px;
+		width: 34px;
+		height: 34px;
+		overflow: hidden;
+		border-radius: 50%;
+	}
+	&__info {
+		font-size: 14px;
+		line-height: 24px;
+	}
+	&__name {
+		@include f500;
+		color: #222;
+	}
+	&__money {
+		color: $green;
+		@include f700;
+	}
+}
 
 .header__menu {
 	background-color: $bg;
@@ -68,6 +159,168 @@
 		font-size: 14px;
 	}
 }
+.user__box,
+.basket__box,
+.message__box,
+.notification__box{
+	position: relative;
+	height: 90px;
+	margin-top: 40px;
+	&:hover {
+		.user__menu {
+			height: auto;
+			border-width: 1px;
+			padding: 20px;
+			overflow: auto;
+		}
+	}
+}
+.basket__box,
+.message__box,
+.notification__box {
+	margin-top: 57px;
+	margin-left: 15px;
+	&:hover{
+		.header__circle::before{
+			color: $bg;
+		}
+		.circle__menu{
+			overflow: hidden;
+			height: auto;
+		}
+		.circle__item{
+			padding: 23px;
+			border-width: 1px;
+		}
+	}
+}
+
+.user__menu {
+	border: 0px solid #ccc;
+	position: absolute;
+	background-color: #fff;
+	padding: 0 20px;
+	width: 158px;
+	top: 69px;
+	left: 20px;
+	transition: all 0.3s;
+	height: 0px;
+	z-index: 2;
+	overflow: hidden;
+	a {
+		font-size: 12px;
+		color: #546e7a;
+		margin-bottom: 15px;
+	}
+}
+
+.circle__menu {
+	position: absolute;
+	top: 69px;
+	border-top: 1px solid #e0e0e0;
+	top: 61px;
+	right: 0;
+	height: 0;
+	overflow: hidden;
+	transition: all .3s;
+	
+}
+
+.circle__item {
+	background-color: #fff;
+	border: 0px solid #e0e0e0;
+	border-top: none;
+	padding: 0 23px;
+	display: flex;
+	align-items: center;
+	width: 269px;
+	position: relative;
+	transition: all 0.3s;
+	&::before{
+		position: absolute;
+		top: 27px;
+		right: 28px;
+		color: #b0bec5;
+		font-size: 16px;	
+	}
+}
+.circle__images {
+	margin-right: 15px;
+}
+.circle__info {
+	&-name {
+		@include f500;
+		color: #263238;
+		line-height: 22px;
+	}
+	&-theme {
+		font-size: 12px;
+		line-height: 22px;
+		color: $green;
+	}
+	&-price {
+		@include f700;
+		font-size: 16px;
+		line-height: 22px;
+		color: #000;
+	}
+	&-date{
+		font-size: 10px;
+		color: #90a4ae;
+	}
+}
+
+.basket {
+	&__summ {
+		background-color: #fff;
+		border: 1px solid #e0e0e0;
+		border-top: none;
+		padding: 16px 17px 12px;
+	}
+	&__title{
+		display: flex;
+		justify-content: space-between;
+		padding-left: 13px;
+		padding-right: 22px;
+		@include f700;
+		color: #000;
+		margin-bottom: 15px;
+		font-size: 16px;
+	}
+	&__btn{
+		color: #fff;
+		@include f700;
+		font-size: 14px;
+		line-height: 14px;
+		padding: 12px 5px;
+		background-color: $green;
+		text-align: center;
+		width: 100px;
+		&-checkout{
+			width: 119px;
+			background-color: $red;
+			margin-left: 6px;
+		}
+	}
+}
+
+.notification__menu,
+.message__menu{
+	.circle__images{
+		margin-right: 20px;
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+	}
+	.circle__info{
+		line-height: 18px;
+	}
+}
+
+.icons-color{
+	color: $tomate;
+}
+
 
 //end Header
 
@@ -105,6 +358,7 @@
 			display: block;
 			width: 100%;
 			box-shadow: 0px 1px 10px 0px rgba(124, 178, 64, 0.75);
+			border: none;
 			border-radius: 4px;
 			height: 56px;
 			font-size: 14px;
@@ -541,13 +795,12 @@
 		background-color: $green;
 		border: none;
 		cursor: pointer;
-		&::before{
+		&::before {
 			content: "\f124";
 			color: #fff;
-			font-family: 'icomoon';
+			font-family: "icomoon";
 			font-size: 20px;
 		}
-
 	}
 }
 
